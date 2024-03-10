@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.sapir.namegenerator.NameController;
 import com.sapir.namesfinder.R;
 
+import java.util.List;
+
 public class ActivityRandom extends AppCompatActivity {
     TextView randomNameLBL;
     Button randomButtonBack;
@@ -22,7 +24,7 @@ public class ActivityRandom extends AppCompatActivity {
         findViews();
         initViews();
 
-        MyCallback myCallback = new MyCallback();
+        MyCallback myCallback = new MyCallback(ActivityRandom.this);
 
         // Create an instance of NameController
         NameController nameController = new NameController( myCallback);
@@ -44,5 +46,12 @@ public class ActivityRandom extends AppCompatActivity {
         randomButtonBack =findViewById(R.id.randomButtonBack);
         randomNameLBL = findViewById(R.id.randomNameLBL);
 
+    }
+    public void updateNames(List<String> names) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String name : names) {
+            stringBuilder.append(name).append("\n");
+        }
+        randomNameLBL.setText(stringBuilder.toString());
     }
 }

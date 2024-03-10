@@ -7,13 +7,19 @@
     tools:context=".namesfinder.ActivityByCategory"
     android:background="@drawable/ic_bg">
 
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="450dp"
+        android:layout_centerInParent="true"
+        >
 
     <TextView
         android:id="@+id/BycategoryLBL"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="450dp"
         android:text="Centered Text"
         android:layout_centerInParent="true"/>
+    </ScrollView>
 
 
     <Button

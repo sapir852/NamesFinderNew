@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.sapir.namegenerator.NameController;
 import com.sapir.namesfinder.R;
 
+import java.util.List;
+
 public class ActivityFirstLetterAndCategory extends AppCompatActivity {
     private String selectedLetter;
     private String selectedCategory;
@@ -70,7 +72,7 @@ public class ActivityFirstLetterAndCategory extends AppCompatActivity {
                 finish();
             }
         });
-        MyCallback myCallback = new MyCallback();
+        MyCallback myCallback = new MyCallback(ActivityFirstLetterAndCategory.this);
 
         // Create an instance of NameController
         NameController nameController = new NameController(myCallback);
@@ -83,7 +85,7 @@ public class ActivityFirstLetterAndCategory extends AppCompatActivity {
                     // Perform your action here, for example:
                     nameController.fetchByCategoryAndLetter(selectedCategory,selectedLetter);
                     String message = "Selected Letter: " + selectedLetter + ", Selected Category: " + selectedCategory;
-                    Toast.makeText(ActivityFirstLetterAndCategory.this, message, Toast.LENGTH_SHORT).show();
+                    //Toast.makeText(ActivityFirstLetterAndCategory.this, message, Toast.LENGTH_SHORT).show();
                 } else {
                     // Handle case where not both are selected
                     Toast.makeText(ActivityFirstLetterAndCategory.this, "Please select both Letter and Category", Toast.LENGTH_SHORT).show();
@@ -98,5 +100,12 @@ public class ActivityFirstLetterAndCategory extends AppCompatActivity {
         categorySpinner = findViewById(R.id.a_categorySpinner);
         a_searchButton = findViewById(R.id.a_searchButton);
         ByFirstLetterAndCategortLBL = findViewById(R.id.ByFirstLetterAndCategortLBL);
+    }
+    public void updateNames(List<String> names) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String name : names) {
+            stringBuilder.append(name).append("\n");
+        }
+        ByFirstLetterAndCategortLBL.setText(stringBuilder.toString());
     }
 }

@@ -24,8 +24,8 @@ public class CategorySpinnerAdapter extends ArrayAdapter<String> {
         // Add the categories
         categories.add("Biblical");
         categories.add("Modern");
-        categories.add("Special");
-        categories.add("Nature");
+        categories.add("Special Nature");
+
     }
 
     @Override

@@ -19,18 +19,16 @@ public class ActivityAllNames extends AppCompatActivity {
     private Button allNamesButtonBack;
     private TextView allNamesLBL ;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_all_names);
         findViews();
         initViews();
-        MyCallback myCallback = new MyCallback(); // Pass reference to this activity
 
-        // Create an instance of NameController
+        MyCallback myCallback = new MyCallback(this); // Pass reference to this activity
         NameController nameController = new NameController(myCallback);
-
-        // Call the fetchAllName method to fetch all names
         nameController.fetchAllName();
 
 

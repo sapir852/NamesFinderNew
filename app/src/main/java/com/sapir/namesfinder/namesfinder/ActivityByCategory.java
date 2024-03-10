@@ -13,6 +13,8 @@ import android.widget.Toast;
 import com.sapir.namegenerator.NameController;
 import com.sapir.namesfinder.R;
 
+import java.util.List;
+
 public class ActivityByCategory extends AppCompatActivity {
     private Button BycategoryButtonBack,searchButton;
     private TextView BycategoryLBL ;
@@ -60,7 +62,7 @@ public class ActivityByCategory extends AppCompatActivity {
                 // Do nothing
             }
         });
-        NameController nameController = new NameController(new MyCallback());
+        NameController nameController = new NameController(new MyCallback(ActivityByCategory.this));
         searchButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -74,5 +76,12 @@ public class ActivityByCategory extends AppCompatActivity {
                 }
             }
         });
+    }
+    public void updateNames(List<String> names) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String name : names) {
+            stringBuilder.append(name).append("\n");
+        }
+        BycategoryLBL.setText(stringBuilder.toString());
     }
 }

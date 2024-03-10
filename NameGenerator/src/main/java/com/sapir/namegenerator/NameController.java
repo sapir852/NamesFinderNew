@@ -1,8 +1,11 @@
 package com.sapir.namegenerator;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import retrofit2.Call;
@@ -14,8 +17,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class NameController {
 
     static final String BASE_URL = "https://pastebin.com/";
-
+    List<String> nameContents ;
     private CallBack_Name callBackNames;
+    String resolt;
 
 
     public NameController(CallBack_Name callBackNames) {
@@ -35,16 +39,26 @@ public class NameController {
 
         Call<List<Name>> call = nameAPI.loadName();
         call.enqueue(new Callback<List<Name>>() {
+
             @Override
             public void onResponse(Call<List<Name>> call, Response<List<Name>> response) {
                 if (response.isSuccessful()) {
                     List<Name> names = response.body();
+                    //List<String> nameContents = new ArrayList<>();
 
+                   // for (Name name : names) {
+                      //  nameContents.add(name.getContent());
                     callBackNames.successNames(names);
+                        Log.d("sstts",""+resolt);
+
+
+
                 } else {
-                    callBackNames.errorNames("Failed to fetch Names");
+                     callBackNames.errorNames("Failed to fetch Names");
                 }
+
             }
+
 
             @Override
             public void onFailure(Call<List<Name>> call, Throwable t) {
@@ -52,6 +66,7 @@ public class NameController {
                 t.printStackTrace();
             }
         });
+
     }
 
     public void fetchByLetter(String letter) {
@@ -80,6 +95,7 @@ public class NameController {
                 } else {
                     callBackNames.errorNames("Failed to fetch Name");
                 }
+
             }
 
             @Override
@@ -116,6 +132,7 @@ public class NameController {
                 } else {
                     callBackNames.errorNames("Failed to fetch Name");
                 }
+
             }
 
             @Override
@@ -152,6 +169,7 @@ public class NameController {
                 } else {
                     callBackNames.errorNames("Failed to fetch Name");
                 }
+
             }
 
             @Override
@@ -187,6 +205,7 @@ public class NameController {
                 } else {
                     callBackNames.errorNames("Failed to fetch Name");
                 }
+
             }
 
             @Override

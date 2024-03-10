@@ -8,15 +8,19 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.sapir.namegenerator.NameController;
 import com.sapir.namesfinder.R;
 
+import java.util.List;
+
 public class ActivityFirstLetter extends AppCompatActivity {
     private String selectedLetter;
     Spinner  letterSpinner;
     Button searchButton,ByFirstLetterButtonBack;
+    TextView ByFirstLetterLBL;
 
 
     @Override
@@ -44,7 +48,7 @@ public class ActivityFirstLetter extends AppCompatActivity {
             }
         });
 
-        MyCallback myCallback = new MyCallback();
+        MyCallback myCallback = new MyCallback(ActivityFirstLetter.this);
 
         // Create an instance of NameController
         NameController nameController = new NameController(myCallback);
@@ -70,6 +74,7 @@ public class ActivityFirstLetter extends AppCompatActivity {
     private void findViews() {
         ByFirstLetterButtonBack=findViewById(R.id.ByFirstLetterButtonBack);
         letterSpinner = findViewById(R.id.letterSpinner);
+        ByFirstLetterLBL = findViewById(R.id.ByFirstLetterLBL);
 
 
     }
@@ -81,5 +86,12 @@ public class ActivityFirstLetter extends AppCompatActivity {
 
             }
         });
+    }
+    public void updateNames(List<String> names) {
+        StringBuilder stringBuilder = new StringBuilder();
+        for (String name : names) {
+            stringBuilder.append(name).append("\n");
+        }
+        ByFirstLetterLBL.setText(stringBuilder.toString());
     }
     }

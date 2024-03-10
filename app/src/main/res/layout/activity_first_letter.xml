@@ -7,13 +7,18 @@
     tools:context=".namesfinder.ActivityFirstLetter"
     android:background="@drawable/ic_bg">
 
-    <!-- Centered Text -->
+     <ScrollView
+    android:layout_width="wrap_content"
+    android:layout_height="450dp"
+    android:layout_centerInParent="true">
+
     <TextView
         android:id="@+id/ByFirstLetterLBL"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Centered Text"
         android:layout_centerInParent="true"/>
+     </ScrollView>
 
     <!-- Back Button -->
     <Button

@@ -8,13 +8,20 @@
     android:background="@drawable/ic_bg">
 
 
+        <ScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="500dp"
+            android:layout_centerInParent="true">
+
         <TextView
             android:id="@+id/allNamesLBL"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_height="500dp"
             android:text="Centered Text"
             android:textColor="@color/black"
-            android:layout_centerInParent="true"/>
+            android:layout_centerInParent="true"
+            />
+        </ScrollView>
 
 
 <Button

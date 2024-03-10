@@ -31,7 +31,7 @@ public class MainActivity extends AppCompatActivity {
         String json = new Gson().toJson(arr);
         int x=9;
 
-        MyCallback myCallback = new MyCallback();
+        MyCallback myCallback = new MyCallback(this);
 
         // Create an instance of NameController
         NameController nameController = new NameController( myCallback);
